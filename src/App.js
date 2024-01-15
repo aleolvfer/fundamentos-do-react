@@ -17,6 +17,7 @@ const array = [
     subtitle: 'Subtituloo 3'
   },
 ]
+let countPost = 0;
 
 export default function App() {
   return (
@@ -26,16 +27,19 @@ export default function App() {
     </Header>
       {
         array.map((item, index) => {
+          countPost++;
           return (
-          <>
-            <p>Descrição {index+1}</p>
-            <Post 
+          <React.Fragment key={countPost}>
+            <Post
+              likes={20}
               post={{
                 title:item.title,
                 subtitle:item.subtitle
               }}
-            />
-          </>
+            >
+              <p>Descrição {index+1}</p>
+            </Post>
+          </React.Fragment>
           )
         })
       }
