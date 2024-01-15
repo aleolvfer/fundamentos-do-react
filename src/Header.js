@@ -18,5 +18,5 @@ Header.propTypes = {
 
 Header.defaultProps = {
   title: 'Titulo padrão',
-  children: 'Taca um h2 aee'
+  children: <h2>Segundo titulo padrão - <i>defaultProps / prop children</i></h2>
 }
