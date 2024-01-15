@@ -1,10 +1,12 @@
 import React from 'react';
 
-export default function App(nome) {
+const category = 'Este é um componente React!!!!';
+
+export default function App() {
   return (
     <>
       <h1>Hello World!!!</h1>
-      <h2>Este é um componente React!!</h2>
+      <h2>{category}{console.log(category)}</h2>
     </>
   )
 }
