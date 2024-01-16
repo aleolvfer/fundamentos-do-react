@@ -9,17 +9,23 @@ export default function App() {
   {
     id: Math.random(),
     title: 'Titulo 1',
-    subtitle: 'Subtituloo 1'
+    subtitle: 'Subtituloo 1',
+    likes: 20,
+    read: false
   },
   {
     id: Math.random(),
     title: 'Titulo 2',
-    subtitle: 'Subtituloo 2'
+    subtitle: 'Subtituloo 2',
+    likes: 20,
+    read: true
   },
   {
     id: Math.random(),
     title: 'Titulo 3',
-    subtitle: 'Subtituloo 3'
+    subtitle: 'Subtituloo 3',
+    likes: 20,
+    read: false
   },
 ]);
 
@@ -51,15 +57,10 @@ export default function App() {
           return (
             <Post
               key={post.id}
-              likes={20}
               onRemove={handleRemove}
-              post={{
-                id: post.id,
-                title:post.title,
-                subtitle:post.subtitle
-              }}
+              post={post}
             >
-              <p>Descrição {index+1}</p>
+              <span>Descrição {index+1}</span>
             </Post>
           )
         })
