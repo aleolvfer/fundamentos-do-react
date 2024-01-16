@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Post from './Post';
 import Header from './Header';
+import { func } from 'prop-types';
 
 export default function App() {
   const [posts, setPosts] = useState([
@@ -33,7 +34,11 @@ export default function App() {
     ]);
   }
 
-  
+  function handleRemove(postId) {
+    setPosts((prevState) => (
+      prevState.filter((post) => post.id !== postId )
+    ));
+  }
 
   return (
     <>
@@ -42,14 +47,16 @@ export default function App() {
       <button onClick={handleRefresh}>Atualizar</button>
     </Header>
       {
-        posts.map((item, index) => {
+        posts.map((post, index) => {
           return (
             <Post
-              key={item.id}
+              key={post.id}
               likes={20}
+              onRemove={handleRemove}
               post={{
-                title:item.title,
-                subtitle:item.subtitle
+                id: post.id,
+                title:post.title,
+                subtitle:post.subtitle
               }}
             >
               <p>Descrição {index+1}</p>
