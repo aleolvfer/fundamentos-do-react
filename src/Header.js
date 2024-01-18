@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 import { ThemeContext } from './ThemeContext';
 
+import styles from './Header.css';
+
 export default function Header({ title, children }) {
   const { onToggleTheme } = useContext(ThemeContext);
 
@@ -11,6 +13,7 @@ export default function Header({ title, children }) {
       style={{
         borderBottom: '1px solid',
       }}
+      className={styles.title}
     >
       <Button
         onClick={onToggleTheme}
