@@ -9,10 +9,7 @@ export default function Header({ title, children }) {
   return (
     <header
       style={{
-        backgroundColor: '#ccc',
         borderBottom: '1px solid',
-        marginBottom: 20,
-        fontFamily: 'system-ui'
       }}
     >
       <Button
