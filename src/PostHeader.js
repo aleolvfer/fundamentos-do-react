@@ -13,9 +13,8 @@ export default function PostHeader(props) {
       >
         Remover
       </Button>
-      <br />
       <strong>
-        {props.post.read && <s>{props.post.title}</s>}
+        {props.post.read && <s>{props.post.title} Já foi lido</s>}
         {!props.post.read && props.post.title}
       </strong>
     </>

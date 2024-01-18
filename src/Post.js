@@ -8,15 +8,16 @@ export default function Post(props) {
   if (props.post.read) {
     return (
       <>
-        <h2>{props.post.title} já foi lido</h2>
-        <Button
-          onClick={() => props.onRemove(props.post.id)}
-          post={{
-            id: props.post.id,
-          }}
-        >
-          <span>Remover</span>
-        </Button>
+        <article>
+          <PostHeader
+            onRemove={props.onRemove}
+            post={{
+              id: props.post.id,
+              title: props.post.title,
+              read: props.post.read,
+            }}
+          />
+        </article>
         <hr />
       </>
     )
@@ -34,12 +35,9 @@ export default function Post(props) {
           }}
         />
         <span>Media: {props.post.likes / 2}</span>
-        <br />
         {props.children}
-        <br />
       </article>
       <hr />
-      <br />
     </>
   );
 }

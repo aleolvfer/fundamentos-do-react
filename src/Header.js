@@ -7,7 +7,14 @@ export default function Header({ title, children }) {
   const { onToggleTheme } = useContext(ThemeContext);
 
   return (
-    <>
+    <header
+      style={{
+        backgroundColor: '#ccc',
+        borderBottom: '1px solid',
+        marginBottom: 20,
+        fontFamily: 'system-ui'
+      }}
+    >
       <Button
         onClick={onToggleTheme}
         >
@@ -16,7 +23,7 @@ export default function Header({ title, children }) {
         <h1>{title}</h1>
         {children}
       <hr/>
-    </>
+    </header>
   );
 }
 
