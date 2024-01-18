@@ -5,6 +5,7 @@ import Header from './Header';
 import Button from './Button';
 import { ThemeProvider } from './ThemeContext';
 
+import styles from './App.scss';
 
 export default function App() {
 
@@ -56,7 +57,7 @@ export default function App() {
       <Header 
         title="Hello World!!!"
       >
-        <h2>Este é um componente passado via <i>prop children</i></h2>
+        <h2 className={styles.title}>Este é um componente passado via <i>prop children</i></h2>
         <Button
           onClick={handleRefresh}
         >
