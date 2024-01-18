@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PostHeader  from './PostHeader';
+import Button from './Button';
 
 export default function Post(props) {
 
@@ -7,22 +9,34 @@ export default function Post(props) {
     return (
       <>
         <h2>{props.post.title} já foi lido</h2>
+        <Button
+          onClick={() => props.onRemove(props.post.id)}
+          post={{
+            id: props.post.id,
+          }}
+        >
+          <span>Remover</span>
+        </Button>
         <hr />
       </>
     )
   }
-
+  
   return (
     <>
       <article>
-        {props.post.read && <s><strong>{props.post.title}</strong></s>}
-        {!props.post.read && <strong>{props.post.title}</strong>}
-        <h3>{props.post.subtitle}</h3>
+        <PostHeader
+          onRemove={props.onRemove}
+          post={{
+            id: props.post.id,
+            title: props.post.title,
+            read: props.post.read,
+          }}
+        />
         <span>Media: {props.post.likes / 2}</span>
         <br />
         {props.children}
         <br />
-        <button onClick={() => props.onRemove(props.post.id)}>Remover</button>
       </article>
       <hr />
       <br />

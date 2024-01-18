@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 import Post from './Post';
 import Header from './Header';
-import { func } from 'prop-types';
+import Button from './Button';
+import { ThemeProvider } from './ThemeContext';
+
 
 export default function App() {
+
   const [posts, setPosts] = useState([
   {
     id: Math.random(),
@@ -35,7 +38,9 @@ export default function App() {
       {
         id: Math.random(),
         title: `Novo titulo ${prevState.length + 1}`,
-        subtitle: 'Novo subtitle'
+        subtitle: 'Novo subtitle',
+        likes: 20,
+        read: prevState.length % 2 === 0 ? false : true,
       }
     ]);
   }
@@ -47,11 +52,17 @@ export default function App() {
   }
 
   return (
-    <>
-    <Header title="Hello World!!!">
-      <h2>Este é um componente passado via <i>prop children</i></h2>
-      <button onClick={handleRefresh}>Atualizar</button>
-    </Header>
+    <ThemeProvider>
+      <Header 
+        title="Hello World!!!"
+      >
+        <h2>Este é um componente passado via <i>prop children</i></h2>
+        <Button
+          onClick={handleRefresh}
+        >
+          Atualizar
+        </Button>
+      </Header>
       {
         posts.map((post, index) => {
           return (
@@ -65,7 +76,6 @@ export default function App() {
           )
         })
       }
-
-    </>
+    </ThemeProvider>
   )
 }
