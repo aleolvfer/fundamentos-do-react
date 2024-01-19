@@ -1,45 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PostHeader  from './PostHeader';
-import Button from './Button';
+
+import styles from './Post.scss';
 
 export default function Post(props) {
 
-  if (props.post.read) {
-    return (
-      <>
-        <article>
-          <PostHeader
-            onRemove={props.onRemove}
-            post={{
-              id: props.post.id,
-              title: props.post.title,
-              read: props.post.read,
-            }}
-          />
-        </article>
-        <hr />
-      </>
-    )
-  }
-  
   return (
-    <>
-      <article>
-        <PostHeader
-          onRemove={props.onRemove}
-          post={{
-            id: props.post.id,
-            title: props.post.title,
-            read: props.post.read,
-          }}
-        />
-        <span>Media: {props.post.likes / 2}</span>
-        {props.children}
-      </article>
-      <hr />
-    </>
-  );
+    <article
+      className={
+        props.post.removed
+        ? styles.deleted
+        : styles.post
+      }
+    >
+      <PostHeader
+        onRemove={props.onRemove}
+        post={{
+          id: props.post.id,
+          title: props.post.title,
+          read: props.post.read,
+        }}
+      />
+      <span>Media: {props.post.likes / 2}</span>
+      {props.post.subtitle}
+    </article>
+  )
 }
 
 Post.propTypes = {
@@ -50,5 +36,6 @@ Post.propTypes = {
     subtitle: PropTypes.string.isRequired,
     likes: PropTypes.number.isRequired,
     read: PropTypes.bool.isRequired,
+    removed: PropTypes.bool.isRequired,
   }).isRequired
 };

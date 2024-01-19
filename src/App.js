@@ -15,21 +15,24 @@ export default function App() {
     title: 'Titulo 1',
     subtitle: 'Subtituloo 1',
     likes: 20,
-    read: false
+    read: false,
+    removed: false,
   },
   {
     id: Math.random(),
     title: 'Titulo 2',
     subtitle: 'Subtituloo 2',
     likes: 20,
-    read: true
+    read: true,
+    removed: false,
   },
   {
     id: Math.random(),
     title: 'Titulo 3',
     subtitle: 'Subtituloo 3',
     likes: 20,
-    read: false
+    read: false,
+    removed: false,
   },
 ]);
 
@@ -48,14 +51,19 @@ export default function App() {
 
   function handleRemove(postId) {
     setPosts((prevState) => (
-      prevState.filter((post) => post.id !== postId )
+      prevState.map(
+        post => (
+          post.id === postId
+          ? { ...post, removed: true }
+          : post
+        )
+      )
     ));
   }
 
   return (
     <ThemeProvider>
       <Header 
-        title="Hello World!!!"
       >
         <h2 className={styles.title}>Este é um componente passado via <i>prop children</i></h2>
         <Button
@@ -72,7 +80,7 @@ export default function App() {
               onRemove={handleRemove}
               post={post}
             >
-              <span>Descrição {index+1}</span>
+              'children'
             </Post>
           )
         })
