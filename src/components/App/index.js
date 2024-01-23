@@ -73,7 +73,7 @@ export default function App() {
         </Button>
       </Header>
       {
-        posts.map((post, index) => {
+        posts.map((post) => {
           return (
             <Post
               key={post.id}
