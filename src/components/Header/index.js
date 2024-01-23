@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
 import Button from '../Button';
 import { ThemeContext } from '../../context/ThemeContext';
 
-import styles from './Header.scss';
+const Title = styled.h1`
+  color: #637bf3;
+`;
 
 export default function Header({ title, children }) {
   const { onToggleTheme } = useContext(ThemeContext);
@@ -13,15 +17,12 @@ export default function Header({ title, children }) {
       style={{
         borderBottom: '1px solid',
       }}
-      className={styles.title}
     >
-      <Button
-        onClick={onToggleTheme}
-        >
+      <Button onClick={onToggleTheme} >
           Mudar tema
       </Button>
-        <h1>{title}</h1>
-        {children}
+      <Title>{title}</Title>
+      {children}
       <hr/>
     </header>
   );

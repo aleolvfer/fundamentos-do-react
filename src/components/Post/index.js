@@ -4,6 +4,8 @@ import PostHeader  from './PostHeader/PostHeader';
 
 import styles from './Post.scss';
 
+import { Subtitle, Rate } from './styles';
+
 export default function Post(props) {
 
   return (
@@ -22,8 +24,9 @@ export default function Post(props) {
           read: props.post.read,
         }}
       />
-      <span>Media: {props.post.likes / 2}</span>
-      {props.post.subtitle}
+
+      <Subtitle>{props.post.subtitle}</Subtitle>
+      <Rate>Media: {props.post.likes / 2}</Rate>
     </article>
   )
 }
